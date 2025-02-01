@@ -1,0 +1,66 @@
+/* PERFORM INNER, LEFT, RIGHT, AND FULL JOINS ON TABLES TO COMBINE DATA MEANINGFULLY */
+
+/*Dataset Creation:
+We will create two tables ( Customers and Orders) for Tasks 1 and 2.*/
+
+CREATE DATABASE E_Commerce;
+USE E_Commerce;
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Email VARCHAR(100),
+    Country VARCHAR(50)
+);
+
+INSERT INTO Customers (CustomerID, Name, Email, Country) VALUES
+(1, 'Alice Johnson', 'alice@example.com', 'USA'),
+(2, 'Bob Smith', 'bob@example.com', 'Canada'),
+(3, 'Charlie Brown', 'charlie@example.com', 'UK'),
+(4, 'David Williams', 'david@example.com', 'Australia');
+
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATE,
+    TotalAmount DECIMAL(10,2),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+INSERT INTO Orders (OrderID, CustomerID, OrderDate, TotalAmount) VALUES
+(1, 1, '2024-01-10', 1300.00),
+(2, 2, '2024-01-12', 800.00),
+(3, 3, '2024-01-15', 1650.00);
+
+/* Task 1: Joins Practice */
+
+-- INNER JOIN
+SELECT *
+FROM Customers AS c
+INNER JOIN Orders AS o
+ON c.CustomerID = o.CustomerID;
+
+-- LEFT JOIN
+SELECT *
+FROM Customers AS c
+LEFT JOIN Orders AS o
+ON c.CustomerID = o.CustomerID;
+
+-- RIGHT JOIN
+SELECT *
+FROM Customers AS c
+RIGHT JOIN Orders AS o
+ON c.CustomerID = o.CustomerID;
+
+-- FUll JOIN
+SELECT *
+FROM Customers AS c
+LEFT JOIN Orders AS o
+ON c.CustomerID = o.CustomerID
+UNION
+SELECT *
+FROM Customers AS c
+LEFT JOIN Orders AS o
+ON c.CustomerID = o.CustomerID;
+
+
