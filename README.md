@@ -11,6 +11,7 @@
 
 Customers
 
+![Image Alt](image_url).https://github.com/kishori842/CODTECH-TASK1-SQL-/blob/81e162da40224aec54a998bb57b6db03608ca25e/Screenshot%202025-02-03%20194134.png
 
 
 
